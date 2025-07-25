@@ -102,6 +102,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 
 import Categories from "./Pages/Categories";
+import EditCategory from "./Pages/EditCategoryModal";
 import Transaction from "./Pages/Transaction";
 import EditTransaction from "./Pages/EditTransaction";
 import AddTransaction from "./Pages/AddTransaction";
@@ -187,6 +188,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/edit-category/:id" element={<EditCategory />} />
+
       </Routes>
     </Router>
   );

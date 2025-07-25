@@ -13,18 +13,19 @@ export default function EditTransaction() {
   });
 
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchTransaction = async () => {
       const res = await fetch(
-        `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${id}.json`
+        `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${userId}/${id}.json`
       );
       const data = await res.json();
       if (data) setFormData(data);
     };
 
     fetchTransaction();
-  }, [id]);
+  }, [id, userId]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -38,7 +39,7 @@ export default function EditTransaction() {
 
     try {
       await fetch(
-        `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${id}.json`,
+        `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${userId}/${id}.json`,
         {
           method: "PATCH",
           headers: {

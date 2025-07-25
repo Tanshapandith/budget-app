@@ -1,12 +1,10 @@
-
-
-
- /* Container */
+/* Container */
 .category-page {
   padding: 20px;
   font-family: 'Segoe UI', sans-serif;
   background-color: #f8f9fc;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Header Section */
@@ -16,6 +14,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .category-header h2 {
@@ -32,6 +31,7 @@
   cursor: pointer;
   font-size: 15px;
   transition: 0.3s ease;
+  white-space: nowrap;
 }
 
 .add-btn:hover {
@@ -62,6 +62,7 @@
   padding: 14px 16px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  white-space: nowrap;
 }
 
 .category-table tbody tr:hover {
@@ -103,14 +104,14 @@
   color: #666;
   font-style: italic;
   padding: 30px 0;
+  text-align: center;
 }
 
-/* Responsive */
+/* Responsive: Category Page */
 @media screen and (max-width: 768px) {
   .category-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: stretch;
   }
 
   .add-btn {
@@ -120,9 +121,13 @@
   .category-table {
     font-size: 14px;
   }
+
+  .edit-btn,
+  .delete-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
 }
-
-
 
 /* Add Category Page */
 .add-category-page {
@@ -132,6 +137,7 @@
   padding: 40px 20px;
   background-color: #f4f6fc;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Card Container */
@@ -143,6 +149,7 @@
   width: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .form-card h2 {
@@ -157,6 +164,7 @@
   justify-content: center;
   gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .type-toggle button {
@@ -222,17 +230,25 @@ form input:focus {
   background: linear-gradient(135deg, #5c0ecb, #1f5cf5);
 }
 
-/* Responsive */
+/* Responsive: Add Category Form */
 @media (max-width: 480px) {
   .form-card {
-    padding: 24px 20px;
+    padding: 24px 16px;
+    margin: 20px auto;
+    width: 90%;
+    box-sizing: border-box;
   }
 
   .type-toggle {
     flex-direction: column;
-  } 
+    gap: 10px;
+  }
 
   .type-toggle button {
     width: 100%;
+  }
+
+  .submit-btn {
+    font-size: 15px;
   }
 }

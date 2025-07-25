@@ -14,15 +14,14 @@ import "./Navbar.css";
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
-
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
   const toggleSettingsMenu = () => setShowSettingsMenu(!showSettingsMenu);
 
   const handleLogout = () => {
-    localStorage.removeItem("userId"); 
-    navigate("/"); 
+    localStorage.removeItem("userId");
+    navigate("/");
   };
 
   return (
@@ -40,59 +39,46 @@ const Navbar = () => {
           <button className="settings-btn" onClick={toggleSettingsMenu}>
             <FaCog />
           </button>
-
           {showSettingsMenu && (
             <ul className="dropdown-menu">
               <li onClick={handleLogout}>
-                <FaSignOutAlt className="icon" />
-                Logout
+                <FaSignOutAlt className="icon" /> Logout
               </li>
             </ul>
           )}
         </div>
       </header>
 
-      {}
+      {/* Sidebar */}
       <aside className={`side-navbar ${isSidebarOpen ? "open" : ""}`}>
         <nav>
           <ul>
             <li>
               <NavLink to="/dashboard" activeClassName="active-link">
-                <FaTachometerAlt className="icon" />
-                Dashboard
+                <FaTachometerAlt className="icon" /> Dashboard
               </NavLink>
             </li>
             <li>
               <NavLink to="/categories" activeClassName="active-link">
-                <FaList className="icon" />
-                Categories
+                <FaList className="icon" /> Categories
               </NavLink>
             </li>
             <li>
               <NavLink to="/transactions" activeClassName="active-link">
-                <FaExchangeAlt className="icon" />
-                Transactions
+                <FaExchangeAlt className="icon" /> Transactions
               </NavLink>
             </li>
           </ul>
         </nav>
       </aside>
-      {}
-{isSidebarOpen && (
-  <div
-    className="overlay"
-    onClick={() => setSidebarOpen(false)}
-    style={{
-      position: "fixed",
-      top: 60, 
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: "rgba(0,0,0,0.4)",
-      zIndex: 999,
-    }}
-  />
-)}
+
+      {/* Sidebar overlay */}
+      {isSidebarOpen && (
+        <div
+          className="overlay"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
     </div>
   );
 };
