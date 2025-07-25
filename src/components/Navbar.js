@@ -52,7 +52,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Side Navbar */}
+      {}
       <aside className={`side-navbar ${isSidebarOpen ? "open" : ""}`}>
         <nav>
           <ul>
@@ -77,6 +77,22 @@ const Navbar = () => {
           </ul>
         </nav>
       </aside>
+      {}
+{isSidebarOpen && (
+  <div
+    className="overlay"
+    onClick={() => setSidebarOpen(false)}
+    style={{
+      position: "fixed",
+      top: 60, 
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: "rgba(0,0,0,0.4)",
+      zIndex: 999,
+    }}
+  />
+)}
     </div>
   );
 };

@@ -45,7 +45,23 @@
 .main-content {
   flex: 1;
   padding: 1rem;
-  margin-top: 60px; /* adjust if navbar height is different */
-  margin-left: 220px; /* adjust if sidebar width is different */
+  margin-top: 60px; 
+  margin-left: 220px; 
   background-color: #f8f9fa;
+}
+
+
+
+.main-content {
+  flex: 1;
+  margin-left: 200px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
 }

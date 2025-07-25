@@ -1,130 +1,238 @@
 
 
 
-
+ /* Container */
 .category-page {
   padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fc;
+  min-height: 100vh;
 }
 
+/* Header Section */
 .category-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.category-header h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+/* Table Styles */
+.category-table-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .category-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  min-width: 400px;
+}
+
+.category-table thead {
+  background-color: #343a40;
+  color: #fff;
 }
 
 .category-table th,
 .category-table td {
-  padding: 12px;
-  border: 1px solid #ccc;
+  padding: 14px 16px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-.add-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
+.category-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 6px 12px;
+  margin-right: 6px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* No Categories Row */
+.category-table td[colspan="3"] {
+  color: #666;
+  font-style: italic;
+  padding: 30px 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+
+  .category-table {
+    font-size: 14px;
+  }
+}
+
+
+
+/* Add Category Page */
+.add-category-page {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 40px 20px;
+  background-color: #f4f6fc;
+  min-height: 100vh;
 }
 
-.modal {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 300px;
-}
-
-.modal input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.modal-actions button {
-  padding: 8px 14px;
-}
-
-
-
-.add-category-page {
-  display: flex;
-  justify-content: space-around;
-  padding: 40px;
-  gap: 30px;
-}
-
+/* Card Container */
 .form-card {
-  background: #f0f4ff;
+  background: #fff;
   padding: 30px;
-  border-radius: 12px;
+  border-radius: 16px;
+  max-width: 500px;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* Toggle Buttons */
 .type-toggle {
   display: flex;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .type-toggle button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: #ddd;
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  font-weight: 500;
 }
 
-.type-toggle .active {
-  background-color: #4f46e5;
-  color: white;
+.type-toggle button.active {
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: #fff;
+  border-color: transparent;
 }
 
+.type-toggle button:hover:not(.active) {
+  background-color: #e0e0e0;
+}
+
+/* Form Fields */
 form label {
   display: block;
-  margin: 10px 0 5px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
 }
 
 form input {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 10px 14px;
   margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s ease;
+  font-size: 15px;
 }
 
+form input:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
+}
+
+/* Submit Button */
 .submit-btn {
-  padding: 10px 20px;
-  background-color: #4f46e5;
-  color: white;
+  width: 100%;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.submit-btn:hover {
+  background: linear-gradient(135deg, #5c0ecb, #1f5cf5);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .form-card {
+    padding: 24px 20px;
+  }
+
+  .type-toggle {
+    flex-direction: column;
+  } 
+
+  .type-toggle button {
+    width: 100%;
+  }
+}

@@ -1,5 +1,100 @@
+// import React from "react";
+// import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+// import Login from "./components/Auth/Login";
+// import Signup from "./components/Auth/Signup";
+// import Dashboard from "./Pages/Dashboard";
+// import ProtectedRoute from "./components/ProtectedRoute";
+// import Navbar from "./components/Navbar";
+
+// import Categories from "./Pages/Categories";
+// import Transaction from "./Pages/Transaction";
+// import EditTransaction from "./Pages/EditTransaction";
+// import AddTransaction from "./Pages/AddTransaction";
+// import AddCategory from "./Pages/AddCategory";
+
+// import "./App.css";
+
+
+// function Layout({ children }) {
+//   const location = useLocation();
+//   const hideNavbar = location.pathname === "/" || location.pathname === "/signup";
+
+//   return (
+//     <div className="app-container">
+//       {!hideNavbar && <Navbar />}
+//       <main className="main-content">{children}</main>
+//     </div>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <Router>
+//       <Layout>
+//         <Routes>
+//           <Route path="/" element={<Login />} />
+//           <Route path="/signup" element={<Signup />} />
+
+//           <Route
+//             path="/dashboard"
+//             element={
+//               <ProtectedRoute>
+//                 <Dashboard />
+//               </ProtectedRoute>
+//             }
+//           />
+//           <Route
+//             path="/categories"
+//             element={
+//               <ProtectedRoute>
+//                 <Categories />
+//               </ProtectedRoute>
+//             }
+//           />
+//           <Route
+//             path="/transactions"
+//             element={
+//               <ProtectedRoute>
+//                 <Transaction />
+//               </ProtectedRoute>
+//             }
+//           />
+//           <Route
+//             path="/add-transaction"
+//             element={
+//               <ProtectedRoute>
+//                 <AddTransaction />
+//               </ProtectedRoute>
+//             }
+//           />
+//           <Route
+//             path="/edit-transaction/:id"
+//             element={
+//               <ProtectedRoute>
+//                 <EditTransaction />
+//               </ProtectedRoute>
+//             }
+//           />
+//           <Route
+//             path="/add-category"
+//             element={
+//               <ProtectedRoute>
+//                 <AddCategory />
+//               </ProtectedRoute>
+//             }
+//           />
+//         </Routes>
+//       </Layout>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Dashboard from "./Pages/Dashboard";
@@ -14,14 +109,10 @@ import AddCategory from "./Pages/AddCategory";
 
 import "./App.css";
 
-
 function Layout({ children }) {
-  const location = useLocation();
-  const hideNavbar = location.pathname === "/" || location.pathname === "/signup";
-
   return (
     <div className="app-container">
-      {!hideNavbar && <Navbar />}
+      <Navbar />
       <main className="main-content">{children}</main>
     </div>
   );
@@ -30,61 +121,73 @@ function Layout({ children }) {
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+      <Routes>
+        {/* No Layout or Navbar for Login/Signup */}
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
+        {/* Wrap protected routes inside Layout */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/categories"
-            element={
-              <ProtectedRoute>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <Categories />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/transactions"
-            element={
-              <ProtectedRoute>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/transactions"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <Transaction />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/add-transaction"
-            element={
-              <ProtectedRoute>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-transaction"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <AddTransaction />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/edit-transaction/:id"
-            element={
-              <ProtectedRoute>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit-transaction/:id"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <EditTransaction />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/add-category"
-            element={
-              <ProtectedRoute>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-category"
+          element={
+            <ProtectedRoute>
+              <Layout>
                 <AddCategory />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </Layout>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </Router>
   );
 }
