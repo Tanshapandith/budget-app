@@ -6,7 +6,7 @@
   overflow-x: hidden;
 }
 
-/* Top Navbar */
+
 .top-navbar {
   position: fixed;
   top: 0;
@@ -128,7 +128,7 @@
   font-size: 16px;
 }
 
-/* Overlay for mobile sidebar */
+
 .overlay {
   position: fixed;
   top: 60px;
@@ -139,7 +139,7 @@
   z-index: 998;
 }
 
-/* Responsive */
+
 @media (min-width: 769px) {
   .menu-btn {
     display: none;
