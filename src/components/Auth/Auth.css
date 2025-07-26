@@ -77,7 +77,21 @@
   background: linear-gradient(to right, #5a67d8, #6b46c1);
   transform: scale(1.03);
 }
+.auth-actions .auth-link-btnn {
+  background: none;
+  border: none;
+  color: #007bff;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  
+}
 
+.auth-actions .auth-link-btnn:hover {
+  color: #0056b3;
+  background: none;
+}
 
 .auth-form p {
   text-align: center;

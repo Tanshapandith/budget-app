@@ -11,7 +11,7 @@ export default function FilterSection() {
   const [totals, setTotals] = useState({ income: 0, expense: 0, net: 0 });
 
   useEffect(() => {
-    const UserId = localStorage.getItem("userId")
+    const UserId = localStorage.getItem("userId");
     const fetchData = async () => {
       const res = await fetch(
         `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${UserId}.json`
@@ -52,8 +52,10 @@ export default function FilterSection() {
       const keyword = search.toLowerCase();
       result = result.filter(
         (tx) =>
-          tx.category?.toLowerCase().includes(keyword) ||
-          tx.note?.toLowerCase().includes(keyword)
+          tx.type?.toLowerCase().includes(keyword) ||
+          tx.note?.toLowerCase().includes(keyword) ||
+          tx.date?.toLowerCase().includes(keyword) ||
+          String(tx.amount).includes(keyword)
       );
     }
 
@@ -108,11 +110,12 @@ export default function FilterSection() {
             />
           </div>
         </div>
+         <h1 className="or-heading">OR</h1>
         <div className="filter-group search-group">
           <label>Search</label>
           <input
             type="text"
-            placeholder="Search keyword..."
+            placeholder="Search by type, note, date or amount..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

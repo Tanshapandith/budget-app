@@ -4,7 +4,7 @@
   overflow-x: hidden;
 }
 
-/* Summary Cards */
+
 .summary-cards {
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,7 @@
   min-width: 250px;
 }
 
-/* Card Colors */
+
 .income-card {
   background-color: #3b6a3c;
 }
@@ -35,7 +35,7 @@
   background-color: #5987ac;
 }
 
-/* Filter Section */
+
 .filter-section {
   display: flex;
   flex-direction: column;
@@ -48,7 +48,12 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-
+.or-heading {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 1rem;
+  color: #666;
+}
 .filter-group {
   flex: 1;
   display: flex;

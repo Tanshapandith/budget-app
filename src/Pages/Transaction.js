@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Style.css";
 
 export default function Transaction() {
@@ -11,19 +12,41 @@ export default function Transaction() {
   };
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm("Are you sure you want to delete this transaction?");
-    if (!confirm) return;
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won’t be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
 
-    try {
-      await fetch(
-        `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${id}.json`,
-        {
-          method: "DELETE",
-        }
-      );
-      setTransactions((prev) => prev.filter((tx) => tx.id !== id));
-    } catch (err) {
-      alert("Failed to delete transaction.");
+    if (result.isConfirmed) {
+      try {
+        await fetch(
+          `https://expenses-application-92499-default-rtdb.firebaseio.com/transactions/${id}.json`,
+          {
+            method: "DELETE",
+          }
+        );
+        setTransactions((prev) => prev.filter((tx) => tx.id !== id));
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your transaction has been deleted.",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } catch (err) {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to delete transaction.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
     }
   };
 
@@ -32,8 +55,8 @@ export default function Transaction() {
   };
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId"); 
-    
+    const userId = localStorage.getItem("userId");
+
     const fetchData = async () => {
       try {
         const res = await fetch(
@@ -45,7 +68,7 @@ export default function Transaction() {
           const parsed = Object.entries(data).map(([id, item]) => ({
             id,
             ...item,
-          }));  
+          }));
           setTransactions(parsed);
         } else {
           setTransactions([]);
@@ -109,5 +132,3 @@ export default function Transaction() {
     </div>
   );
 }
-
-

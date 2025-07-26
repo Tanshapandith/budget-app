@@ -1,59 +1,19 @@
-/* .add-transaction-container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #f7f9fc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.transaction-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.transaction-form input,
-.transaction-form select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.submit-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.submit-btn:hover {
-  background-color: #388e3c;
-} */
-
-
-
-
-/* Addtransaction.css */
-
 .add-transaction-container {
   max-width: 500px;
-  margin: 70px auto 30px;
-  padding: 30px;
-  background: #ffffff;
+  margin: 40px 80px;
+  padding: 10px;
+  background: #b3b3b3;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', sans-serif;
+  width: 90%;
 }
 
 .add-transaction-container h2 {
   text-align: center;
   margin-bottom: 25px;
   color: #4e54c8;
+  font-size: 24px;
 }
 
 .transaction-form {
@@ -65,7 +25,6 @@
 .transaction-form label {
   font-weight: 600;
   color: #333;
-  margin-bottom: 5px;
 }
 
 .transaction-form input,
@@ -73,9 +32,11 @@
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .transaction-form input:focus,
@@ -99,21 +60,27 @@
   background: linear-gradient(to right, #3b3fc2, #7b81f4);
 }
 
-/* Responsive Design */
+/* ✅ Mobile Responsive */
 @media (max-width: 600px) {
   .add-transaction-container {
-    margin: 80px 20px 30px;
-    padding: 20px;
-  }
-
-  .transaction-form input,
-  .transaction-form select,
-  .submit-btn {
-    font-size: 14px;
-    padding: 10px;
+    margin: 60px 15px 30px;
+    padding: 15px;
+    width: 95%;
   }
 
   .add-transaction-container h2 {
     font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .transaction-form input,
+  .transaction-form select {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+    padding: 10px;
   }
 }
