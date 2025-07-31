@@ -22,7 +22,7 @@ html, body {
   margin-bottom: 1rem;
   flex-wrap: wrap;
   gap: 10px;
-  width: 40%;
+  width: 100%;
 }
 
 .transaction-header h2 {
@@ -32,14 +32,16 @@ html, body {
 }
 
 .add-btn {
-  background-color: #3b82f6;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 6px;
+   background: linear-gradient(to right, #3a78bb, #7f9edc);
+  color: #fff;
   border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s ease;
+  font-size: 15px;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  
 }
 .add-btn:hover {
   background-color: #2563eb;
@@ -171,7 +173,7 @@ background-color: #999;
 
   .transaction-table-wrapper {
     padding: 8px;
-    max-width: 500px;
+    max-width: 300px;
   }
 }
 
@@ -181,7 +183,7 @@ background-color: #999;
   }
 
   .add-btn {
-    width: 35%;
+    width: 80%;
     text-align: center;
     font-size: 1rem;
     padding: 12px;

@@ -4,7 +4,7 @@
   font-family: 'Segoe UI', sans-serif;
   padding: 1rem;
   max-width: 1200px;
-  /* margin-left: 20px; */
+  margin-left: 20px;
    margin: 0 auto;
   box-sizing: border-box;
 
@@ -19,7 +19,8 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
   gap: 10px;
-width: 40%;
+  width: 100%;
+     
 }
 
 .category-header h2 {
@@ -38,10 +39,12 @@ width: 40%;
   font-size: 15px;
   transition: 0.3s ease;
   white-space: nowrap;
+ 
 }
 
 .add-btn:hover {
   opacity: 0.9;
+  
 }
 
 
@@ -243,15 +246,17 @@ form input:focus {
 @media screen and (max-width: 768px) {
   .category-header {
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    align-items: flex-start;
+    /* gap: 12px; */
   }
-
+.category-header h2 {
+    font-size: 20px;
+  }
   .add-btn {
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-    padding: 12px;
+    width: 30%;
+    font-size: 16px;
+
+    
   }
 
   .category-table-wrapper {
@@ -279,14 +284,16 @@ form input:focus {
 
 @media screen and (max-width: 480px) {
   .category-header h2 {
-    font-size: 1.3rem;
-    text-align: center;
+     font-size: 18px;
   }
 
-  .add-btn {
-    font-size: 0.95rem;
-    padding: 10px;
-  }
+  
+   .category-page .add-btn {
+        width: 70%;
+        text-align: center;
+        font-size: 1rem;
+        padding: 12px;
+    }
 
   .category-table th,
   .category-table td {
