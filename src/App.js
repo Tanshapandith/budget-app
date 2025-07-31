@@ -105,8 +105,7 @@ import Categories from "./Pages/Categories";
 import EditCategory from "./Pages/EditCategoryModal";
 import Transaction from "./Pages/Transaction";
 import EditTransaction from "./Pages/EditTransaction";
-import AddTransaction from "./Pages/AddTransaction";
-import AddCategory from "./Pages/AddCategory";
+
 
 import "./App.css";
 
@@ -123,11 +122,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* No Layout or Navbar for Login/Signup */}
+        {}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* Wrap protected routes inside Layout */}
+        {}
         <Route
           path="/dashboard"
           element={
@@ -158,16 +157,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/add-transaction"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <AddTransaction />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
+       
         <Route
           path="/edit-transaction/:id"
           element={
@@ -178,16 +168,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/add-category"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <AddCategory />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
+       
         <Route path="/edit-category/:id" element={<EditCategory />} />
 
       </Routes>

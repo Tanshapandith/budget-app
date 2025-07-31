@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Swal from "sweetalert2";
-import EditCategoryModal from "./EditCategoryModal"; 
+import EditCategoryModal from "./EditCategoryModal";
 import "./Category.css";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const userId = localStorage.getItem("userId");
 
-  // Fetch categories from Firebase
-  const fetchCategories = async () => {
+  // ✅ useCallback to satisfy ESLint
+  const fetchCategories = useCallback(async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://expenses-application-92499-default-rtdb.firebaseio.com/AddCategory/${userId}.json`
       );
@@ -28,51 +30,40 @@ export default function Categories() {
       }
     } catch (error) {
       console.error("Error fetching categories:", error);
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }, [userId]); // dependency added
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [fetchCategories]); // ✅ now no warning
 
-  // Open modal (add or edit)
   const handleOpenModal = (category = null) => {
     setEditData(category);
     setModalOpen(true);
   };
 
-  // Save category (add or edit)
   const handleSaveCategory = async (category) => {
     try {
-      if (editData) {
-        // Edit
-        await fetch(
-          `https://expenses-application-92499-default-rtdb.firebaseio.com/AddCategory/${userId}/${editData.id}.json`,
-          {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(category),
-          }
-        );
-      } else {
-        // Add
-        await fetch(
-          `https://expenses-application-92499-default-rtdb.firebaseio.com/AddCategory/${userId}.json`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(category),
-          }
-        );
-      }
+      const url = editData
+        ? `https://expenses-application-92499-default-rtdb.firebaseio.com/AddCategory/${userId}/${editData.id}.json`
+        : `https://expenses-application-92499-default-rtdb.firebaseio.com/AddCategory/${userId}.json`;
 
-      fetchCategories(); // Refresh data
+      const method = editData ? "PATCH" : "POST";
+
+      await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(category),
+      });
+
+      fetchCategories();
     } catch (error) {
       Swal.fire("Error", "Something went wrong!", "error");
     }
   };
 
-  // Delete category
   const handleDelete = async (categoryId) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -89,7 +80,7 @@ export default function Categories() {
           { method: "DELETE" }
         );
         Swal.fire("Deleted!", "Category has been deleted.", "success");
-        fetchCategories(); // Refresh
+        fetchCategories();
       } catch (error) {
         Swal.fire("Error", "Failed to delete category.", "error");
       }
@@ -115,7 +106,15 @@ export default function Categories() {
             </tr>
           </thead>
           <tbody>
-            {categories.length > 0 ? (
+            {isLoading ? (
+              <tr>
+                <td colSpan="3">
+                  <div className="loader">
+                    <span className="loader-spinner"></span>
+                  </div>
+                </td>
+              </tr>
+            ) : categories.length > 0 ? (
               categories.map((cat) => (
                 <tr key={cat.id}>
                   <td>{cat.title}</td>
@@ -147,7 +146,6 @@ export default function Categories() {
         </table>
       </div>
 
-      {/* Modal for Add/Edit */}
       <EditCategoryModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}

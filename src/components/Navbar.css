@@ -1,9 +1,12 @@
+
 .layout {
   display: flex;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   padding-top: 60px;
+  max-width: 100vw;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 
@@ -13,7 +16,7 @@
   left: 0;
   width: 100%;
   height: 60px;
-  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  background-color: #3a78bb;
   color: white;
   display: flex;
   align-items: center;
@@ -43,9 +46,10 @@
   cursor: pointer;
 }
 
+
 .settings-dropdown {
   position: absolute;
-  right: 20px;
+  right: 50px;
 }
 
 .settings-btn {
@@ -85,18 +89,18 @@
   margin-right: 10px;
 }
 
-/* Sidebar */
+
 .side-navbar {
   position: fixed;
   top: 60px;
   left: -220px;
   width: 200px;
   height: calc(100vh - 60px);
-  background-color: #2d2f3a;
-  color: white;
+  background-color: #ffffff;
   padding-top: 20px;
   z-index: 999;
   transition: left 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .side-navbar.open {
@@ -114,14 +118,18 @@
   align-items: center;
   gap: 10px;
   padding: 15px 20px;
-  color: white;
+  color: #fff;
   text-decoration: none;
+  background-color: #3a78bb;
+  margin: 10px 15px;
+  border-radius: 4px;
   transition: background 0.2s;
 }
 
 .side-navbar nav a:hover,
 .side-navbar nav a.active-link {
-  background-color: #44465a;
+  background-color: rgb(185, 187, 201);
+  color: #000;
 }
 
 .icon {
@@ -137,6 +145,26 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 998;
+  display: none;
+}
+
+.side-navbar.open + .overlay {
+  display: block;
+}
+
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper::after {
+  content: "← Scroll →";
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 8px;
 }
 
 
@@ -147,18 +175,38 @@
 
   .side-navbar {
     left: 0;
-    width: 200px;
-  }
-
-  .side-navbar.open {
-    left: 0;
   }
 
   .overlay {
-    display: none;
+    display: none !important;
   }
 
   .layout {
     padding-left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar h1 {
+    font-size: 1.1rem;
+    margin-left: 3rem;
+    font-weight: 500;
+   
+  }
+.settings-dropdown {
+  position: absolute;
+  right: 20px;
+}
+  .side-navbar nav a {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+
+  .dropdown-menu {
+    right: 0;
+  }
+
+  .layout {
+    padding-left: 0;
   }
 }

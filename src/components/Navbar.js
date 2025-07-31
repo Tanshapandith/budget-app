@@ -9,6 +9,7 @@ import {
   FaTimes,
   FaSignOutAlt,
 } from "react-icons/fa";
+import Swal from "sweetalert2"; 
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -21,18 +22,31 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
-    navigate("/");
+
+    
+    Swal.fire({
+      icon: "success",
+      title: "Logged out",
+      text: "You have successfully logged out.",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+
+   
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   };
 
   return (
     <div className="layout">
-      {/* Top Navbar */}
+      {}
       <header className="top-navbar">
         <div className="left">
           <button className="menu-btn" onClick={toggleSidebar}>
             {isSidebarOpen ? <FaTimes /> : <FaBars />}
           </button>
-          <h1>💰 Expense Manager</h1>
+          <h1>Expense Manager</h1>
         </div>
 
         <div className="settings-dropdown">
@@ -49,7 +63,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Sidebar */}
+      {}
       <aside className={`side-navbar ${isSidebarOpen ? "open" : ""}`}>
         <nav>
           <ul>
@@ -72,12 +86,9 @@ const Navbar = () => {
         </nav>
       </aside>
 
-      {/* Sidebar overlay */}
+      {}
       {isSidebarOpen && (
-        <div
-          className="overlay"
-          onClick={() => setSidebarOpen(false)}
-        />
+        <div className="overlay" onClick={() => setSidebarOpen(false)} />
       )}
     </div>
   );

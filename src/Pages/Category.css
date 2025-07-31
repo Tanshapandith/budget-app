@@ -1,29 +1,35 @@
-/* Container */
+
 .category-page {
-  padding: 20px;
+ 
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fc;
-  min-height: 100vh;
+  padding: 1rem;
+  max-width: 1200px;
+  /* margin-left: 20px; */
+   margin: 0 auto;
   box-sizing: border-box;
+
+  
 }
 
-/* Header Section */
+
 .category-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   gap: 10px;
+width: 40%;
 }
 
 .category-header h2 {
   font-size: 24px;
   color: #333;
+   margin: 0;
 }
 
 .add-btn {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(to right, #3a78bb, #7f9edc);
   color: #fff;
   border: none;
   padding: 10px 18px;
@@ -38,11 +44,10 @@
   opacity: 0.9;
 }
 
-/* Table Styles */
+
 .category-table-wrapper {
   overflow-x: auto;
-  background: #fff;
-  border-radius: 10px;
+    max-width: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,23 +58,46 @@
 }
 
 .category-table thead {
-  background-color: #343a40;
+  background-color: #3a78bb;
   color: #fff;
 }
 
 .category-table th,
 .category-table td {
   padding: 14px 16px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
   white-space: nowrap;
+  border: 1px solid black;
+   box-sizing: border-box;
 }
 
 .category-table tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Action Buttons */
+.loader {
+  text-align: center;
+  padding: 20px;
+}
+
+.loader-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4f46e5;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 .edit-btn,
 .delete-btn {
   padding: 6px 12px;
@@ -99,7 +127,7 @@
   background-color: #c82333;
 }
 
-/* No Categories Row */
+
 .category-table td[colspan="3"] {
   color: #666;
   font-style: italic;
@@ -107,29 +135,8 @@
   text-align: center;
 }
 
-/* Responsive: Category Page */
-@media screen and (max-width: 768px) {
-  .category-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
 
-  .add-btn {
-    width: 100%;
-  }
 
-  .category-table {
-    font-size: 14px;
-  }
-
-  .edit-btn,
-  .delete-btn {
-    font-size: 13px;
-    padding: 6px 10px;
-  }
-}
-
-/* Add Category Page */
 .add-category-page {
   display: flex;
   justify-content: center;
@@ -138,9 +145,10 @@
   background-color: #f4f6fc;
   min-height: 100vh;
   box-sizing: border-box;
+  width: 100%;
 }
 
-/* Card Container */
+
 .form-card {
   background: #fff;
   padding: 30px;
@@ -158,7 +166,6 @@
   color: #333;
 }
 
-/* Toggle Buttons */
 .type-toggle {
   display: flex;
   justify-content: center;
@@ -188,7 +195,7 @@
   background-color: #e0e0e0;
 }
 
-/* Form Fields */
+
 form label {
   display: block;
   font-weight: 500;
@@ -212,7 +219,7 @@ form input:focus {
   box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
 }
 
-/* Submit Button */
+
 .submit-btn {
   width: 100%;
   padding: 12px;
@@ -230,13 +237,78 @@ form input:focus {
   background: linear-gradient(135deg, #5c0ecb, #1f5cf5);
 }
 
-/* Responsive: Add Category Form */
-@media (max-width: 480px) {
+
+/* Additional Responsive Enhancements */
+
+@media screen and (max-width: 768px) {
+  .category-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .category-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .category-table {
+    font-size: 14px;
+    min-width: 100%;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin: 3px;
+  }
+
+  .category-page {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category-header h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .add-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .category-table th,
+  .category-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .category-table td[colspan="3"] {
+    font-size: 0.9rem;
+    padding: 24px 0;
+  }
+
   .form-card {
-    padding: 24px 16px;
+    padding: 20px 14px;
+    width: 92%;
     margin: 20px auto;
-    width: 90%;
-    box-sizing: border-box;
   }
 
   .type-toggle {
@@ -250,5 +322,12 @@ form input:focus {
 
   .submit-btn {
     font-size: 15px;
+    padding: 10px;
+  }
+
+  form input {
+    padding: 10px 12px;
+    font-size: 14px;
   }
 }
+

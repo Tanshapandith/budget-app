@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FilterSection from "../components/FilterSection";
-import TransactionTable from "../components/TransactionTable";
+
 
 export default function Dashboard() {
   const [transactions, setTransactions] = useState([]);
@@ -54,7 +54,7 @@ export default function Dashboard() {
   return (
     <>
       <FilterSection onFilterChange={handleFilter} />
-      <TransactionTable transactions={filtered} />
+      
       {}
     </>
   );

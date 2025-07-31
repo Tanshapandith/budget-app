@@ -1,13 +1,17 @@
+/* === Base styles === */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .transaction-page {
   padding: 1rem;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -15,145 +19,186 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
   gap: 10px;
+  width: 40%;
 }
-.transaction-table th{
-    background-color: #343a40;
-}
+
 .transaction-header h2 {
-  font-size: 1.8rem;
+  font-size: 24px;
   color: #333;
+  margin: 0;
 }
 
 .add-btn {
-  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  background-color: #3b82f6;
   color: white;
-  padding: 10px 16px;
-  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 14px;
+  transition: background 0.2s ease;
 }
-
 .add-btn:hover {
-  background: linear-gradient(to right, #8f94fb, #4e54c8);
+  background-color: #2563eb;
 }
 
 .transaction-table-wrapper {
-  overflow-x: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  width: 100%;
+}
+
+.transaction-table-scroll {
+   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  border: 1px solid #ddd;
 }
 
 .transaction-table {
+  min-width: 900px; /* Force horizontal scroll on small screens */
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
-}
-
-.transaction-table thead {
-  background-color: #343a40;
-  color: white;
 }
 
 .transaction-table th,
 .transaction-table td {
-  padding: 12px 16px;
-  text-align: left;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  white-space: nowrap;
 }
 
-.transaction-table tbody tr:nth-child(even) {
-  background-color: #f4f4f4;
+.transaction-table th {
+  background-color: #3a78bb;
+  color: white;
+  font-weight: 600;
 }
 
-.transaction-table tbody tr:hover {
-  background-color: #e6e6ff;
+
+.transaction-table-scroll::-webkit-scrollbar {
+  height: 8px;
 }
+.transaction-table-scroll::-webkit-scrollbar-thumb {
+background-color: #999;
+  border-radius: 4px;
+}
+
+
+.scroll-note {
+ text-align: center;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 6px;
+}
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.loader-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .edit-btn,
 .delete-btn {
-  padding: 6px 10px;
-  font-size: 0.85rem;
-  margin-right: 6px;
+  padding: 4px 8px;
+  margin: 2px;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  font-size: 13px;
 }
-
 .edit-btn {
-  background-color: #ffc107;
-  color: #fff;
+  background-color: #10b981;
+  color: white;
 }
-
-.edit-btn:hover {
-  background-color: #e0a800;
-}
-
 .delete-btn {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.delete-btn:hover {
-  background-color: #b52a37;
+  background-color: #ef4444;
+  color: white;
 }
 
 
-@media (max-width: 768px) {
+.badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: inline-block;
+}
+.badge-green {
+  
+  color: #065f46;
+}
+.badge-red {
+ 
+  color: #991b1b;
+}
+
+
+@media screen and (max-width: 768px) {
   .transaction-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
   }
 
   .transaction-header h2 {
-    font-size: 1.5rem;
+    font-size: 20px;
   }
 
   .add-btn {
-    width: 100%;
-    font-size: 1rem;
+    width: 30%;
+    font-size: 16px;
   }
 
   .transaction-table {
-    font-size: 0.85rem;
-    min-width: unset;
+    font-size: 14px;
   }
 
-  .edit-btn,
-  .delete-btn {
-    margin: 4px 2px;
-    padding: 6px 8px;
-    font-size: 0.75rem;
+  .transaction-table-wrapper {
+    padding: 8px;
+    max-width: 500px;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .transaction-header h2 {
-    font-size: 1.3rem;
+    font-size: 18px;
   }
 
   .add-btn {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .transaction-table th,
-  .transaction-table td {
-    padding: 10px;
+    width: 35%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px;
   }
 
   .transaction-table {
-    font-size: 0.8rem;
+    font-size: 14px;
+    
   }
 
   .edit-btn,
   .delete-btn {
-    font-size: 0.7rem;
-    padding: 5px 7px;
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .badge {
+    font-size: 12px;
   }
 }

@@ -4,7 +4,7 @@
   align-items: center;
   
   height: 96vh;
-  /* background: linear-gradient(to right, #667eea, #764ba2); */
+   background: linear-gradient(to right, #7f9edc, #3a78bb);
   padding: 20px;
   font-family: "Segoe UI", sans-serif;
  
@@ -63,7 +63,7 @@
 
 
 .auth-form button {
-  background: linear-gradient(to right, #667eea, #764ba2);
+  background: linear-gradient(to right, #7f9edc, #3a78bb);
   color: white;
   padding: 12px 20px;
   font-size: 16px;
@@ -74,7 +74,8 @@
 }
 
 .auth-form button:hover {
-  background: linear-gradient(to right, #5a67d8, #6b46c1);
+  background: linear-gradient(to right, #3a78bb, #7f9edc);
+
   transform: scale(1.03);
 }
 .auth-actions .auth-link-btnn {
@@ -108,6 +109,13 @@
 
 .auth-form a:hover {
   color: #5a67d8;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 @media (max-width: 480px) {

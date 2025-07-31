@@ -1,86 +1,157 @@
-.add-transaction-container {
-  max-width: 500px;
-  margin: 40px 80px;
-  padding: 10px;
-  background: #b3b3b3;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-  width: 90%;
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1200;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
+
+.modal-content {
+  background: rgba(88, 137, 207, 0.96);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  color: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.4s ease-out;
+  position: relative;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.close-btn:hover {
+  transform: scale(1.2);
+  color: #ff4c60;
+}
+
+/* HEADINGS */
+.modal-content h2,
 .add-transaction-container h2 {
   text-align: center;
-  margin-bottom: 25px;
-  color: #4e54c8;
-  font-size: 24px;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
 }
 
+/* FORM STYLING */
 .transaction-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
 .transaction-form label {
-  font-weight: 600;
-  color: #333;
+  font-weight: 500;
+  color: #f0f0f0;
 }
 
 .transaction-form input,
 .transaction-form select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #222;
   outline: none;
-  transition: border-color 0.3s;
-  width: 100%;
-  box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 .transaction-form input:focus,
 .transaction-form select:focus {
-  border-color: #4e54c8;
+  border: 1px solid #6a11cb;
+  background: #e2eaff;
 }
 
+/* SUBMIT BUTTON */
 .submit-btn {
-  background: linear-gradient(to right, #4e54c8, #8f94fb);
-  color: white;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 0.8rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #1477e1, #7f9edc);
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
-
 .submit-btn:hover {
-  background: linear-gradient(to right, #3b3fc2, #7b81f4);
+  transform: translateY(-2px);
+  background: linear-gradient(to right, #7f9edc, #3a78bb);
 }
 
-/* ✅ Mobile Responsive */
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ADD TRANSACTION WRAPPER */
+.add-transaction-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f7f4f4;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+/* RESPONSIVE MOBILE STYLES */
 @media (max-width: 600px) {
-  .add-transaction-container {
-    margin: 60px 15px 30px;
-    padding: 15px;
-    width: 95%;
+  .modal-content {
+    padding: 1.2rem;
   }
 
+  .modal-content h2,
   .add-transaction-container h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
   }
 
   .transaction-form input,
   .transaction-form select {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 0.95rem;
+    padding: 0.6rem;
   }
 
   .submit-btn {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 12px;
+    font-size: 1.3rem;
   }
 }
